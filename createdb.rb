@@ -31,9 +31,9 @@ end
 # Insert initial (seed) data
 events_table = DB.from(:events)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
-                    date: "June 21",
+events_table.insert(title: "Billy’s English Bootcamp", 
+                    description: "Hardcore English lesson modeled after U.S. army training!! “Who’s the boss? Is it English, or is it you?",
+                    date: "Jan 1",
                     location: "Kellogg Global Hub")
 
 events_table.insert(title: "Kaleapolooza", 
