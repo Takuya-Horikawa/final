@@ -13,6 +13,8 @@ DB.create_table! :events do
   String :description, text: true
   String :date
   String :location
+  String :level
+  String :price
 end
 DB.create_table! :rsvps do
   primary_key :id
@@ -34,11 +36,15 @@ events_table = DB.from(:events)
 events_table.insert(title: "Billy’s English Bootcamp", 
                     description: "Hardcore English lesson modeled after U.S. army training!! “Who’s the boss? Is it English, or is it you?",
                     date: "Jan 1",
-                    location: "Billy's army base")
+                    location: "Billy's army base",
+                    level: "Hardcore", 
+                    price: "$500 per lesson")
 
 events_table.insert(title: "Cooking and English conversation with Amy", 
                     description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
                     date: "December 23",
-                    location: "Amy's place")
+                    location: "Amy's place",
+                    level: "Beginner", 
+                    price: "$200 per lesson")
 
 puts "Success!"
