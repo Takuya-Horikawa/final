@@ -34,11 +34,11 @@ events_table = DB.from(:events)
 events_table.insert(title: "Billy’s English Bootcamp", 
                     description: "Hardcore English lesson modeled after U.S. army training!! “Who’s the boss? Is it English, or is it you?",
                     date: "Jan 1",
-                    location: "Kellogg Global Hub")
+                    location: "Billy's army base")
 
-events_table.insert(title: "Kaleapolooza", 
+events_table.insert(title: "Cooking and English conversation with Amy", 
                     description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+                    date: "December 23",
+                    location: "Amy's place")
 
 puts "Success!"
