@@ -4,3 +4,17 @@
 <% for event in @events %>
     <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
 <% end %>
+
+# put your API credentials here (found on your Twilio dashboard)
+account_sid = "ACb94556cb91c0face0d115104d56215e4"
+auth_token = "bce12ba905b63af70325f86d76b8a360"
+
+# set up a client to talk to the Twilio REST API
+client = Twilio::REST::Client.new(account_sid, auth_token)
+
+# send the SMS from your trial Twilio number to your verified non-Twilio number
+client.messages.create(
+ from: "+19282482312", 
+ to: "+13129753751",
+ body: "Hey I can teach English!"
+)
