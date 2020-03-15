@@ -41,7 +41,7 @@ events_table.insert(title: "Billy’s English Bootcamp",
                     price: "$500 per lesson")
 
 events_table.insert(title: "Cooking and English conversation with Amy", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
+                    description: "You can learn cooking and English at the same time!",
                     date: "December 23",
                     location: "Amy's place",
                     level: "Beginner", 
