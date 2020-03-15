@@ -1,5 +1,4 @@
 <h1>World's Best English Lessons!</h1>
-src=“https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw &q=<%= @lat_long %>&zoom=6” allowfullscreen>
 
 <% for event in @events %>
     <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
