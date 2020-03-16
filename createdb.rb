@@ -36,14 +36,14 @@ events_table = DB.from(:events)
 events_table.insert(title: "Billy’s English Bootcamp", 
                     description: "Hardcore English lesson modeled after U.S. army training!! “Who’s the boss? Is it English, or is it you?",
                     date: "Jan 1",
-                    location: "Billy's army base",
+                    location: "Kellogg School's Global Hub room 2410",
                     level: "Hardcore", 
                     price: "$500 per lesson")
 
 events_table.insert(title: "Cooking and English conversation with Amy", 
                     description: "You can learn cooking and English at the same time!",
                     date: "December 23",
-                    location: "Amy's place",
+                    location: "Kellogg School's Global Hub room 1110",
                     level: "Beginner", 
                     price: "$200 per lesson")
 
