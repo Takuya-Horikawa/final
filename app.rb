@@ -23,7 +23,6 @@ before do
     @current_user = users_table.where(id: session["user_id"]).to_a[0]
 end
 
-# homepage and list of events (aka "index")
 get "/" do
     puts "params: #{params}"
 
@@ -37,7 +36,6 @@ get "/" do
     view "events"
 end
 
-# event details (aka "show")
 get "/events/:id" do
     puts "params: #{params}"
 
@@ -51,7 +49,6 @@ get "/events/:id" do
     view "event"
 end
 
-# display the rsvp form (aka "new")
 get "/events/:id/rsvps/new" do
     puts "params: #{params}"
 
@@ -59,13 +56,11 @@ get "/events/:id/rsvps/new" do
     view "new_rsvp"
 end
 
-# receive the submitted rsvp form (aka "create")
 post "/events/:id/rsvps/create" do
     puts "params: #{params}"
 
-    # first find the event that rsvp'ing for
     @event = events_table.where(id: params[:id]).to_a[0]
-    # next we want to insert a row in the rsvps table with the rsvp form data
+
     rsvps_table.insert(
         event_id: @event[:id],
         user_id: session["user_id"],
@@ -76,7 +71,6 @@ post "/events/:id/rsvps/create" do
     redirect "/events/#{@event[:id]}"
 end
 
-# display the rsvp form (aka "edit")
 get "/rsvps/:id/edit" do
     puts "params: #{params}"
 
@@ -85,13 +79,11 @@ get "/rsvps/:id/edit" do
     view "edit_rsvp"
 end
 
-# receive the submitted rsvp form (aka "update")
 post "/rsvps/:id/update" do
     puts "params: #{params}"
 
-    # find the rsvp to update
     @rsvp = rsvps_table.where(id: params["id"]).to_a[0]
-    # find the rsvp's event
+
     @event = events_table.where(id: @rsvp[:event_id]).to_a[0]
 
     if @current_user && @current_user[:id] == @rsvp[:id]
@@ -106,7 +98,6 @@ post "/rsvps/:id/update" do
     end
 end
 
-# delete the rsvp (aka "destroy")
 get "/rsvps/:id/destroy" do
     puts "params: #{params}"
 
@@ -118,16 +109,13 @@ get "/rsvps/:id/destroy" do
     redirect "/events/#{@event[:id]}"
 end
 
-# display the signup form (aka "new")
 get "/users/new" do
     view "new_user"
 end
 
-# receive the submitted signup form (aka "create")
 post "/users/create" do
     puts "params: #{params}"
 
-    # if there's already a user with this email, skip!
     existing_user = users_table.where(email: params["email"]).to_a[0]
     if existing_user
         view "error"
@@ -142,22 +130,18 @@ post "/users/create" do
     end
 end
 
-# display the login form (aka "new")
 get "/logins/new" do
     view "new_login"
 end
 
-# receive the submitted login form (aka "create")
 post "/logins/create" do
     puts "params: #{params}"
 
-    # step 1: user with the params["email"] ?
     @user = users_table.where(email: params["email"]).to_a[0]
 
     if @user
-        # step 2: if @user, does the encrypted password match?
+
         if BCrypt::Password.new(@user[:password]) == params["password"]
-            # set encrypted cookie for logged in user
             session["user_id"] = @user[:id]
             redirect "/"
         else
@@ -168,9 +152,7 @@ post "/logins/create" do
     end
 end
 
-# logout user
 get "/logout" do
-    # remove encrypted cookie for logged out user
     session["user_id"] = nil
     redirect "/logins/new"
 end
