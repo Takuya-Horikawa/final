@@ -30,8 +30,8 @@ get "/" do
     @events = events_table.all.to_a
     pp @events
     
-  @lat = rand(-90.0..90.0)
-  @long = rand(-180.0..180.0)
+  @lat = 42.058849
+  @long = -87.672951
   @lat_long = "#{@lat},#{@long}"
     
     view "events"
