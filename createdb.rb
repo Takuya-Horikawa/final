@@ -4,9 +4,7 @@ connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqli
 DB = Sequel.connect(connection_string)                                                #
 #######################################################################################
 
-# Database schema - this should reflect your domain model
 
-# New domain model - adds users
 DB.create_table! :events do
   primary_key :id
   String :title
@@ -30,7 +28,6 @@ DB.create_table! :users do
   String :password
 end
 
-# Insert initial (seed) data
 events_table = DB.from(:events)
 
 events_table.insert(title: "Billy’s English Bootcamp", 
